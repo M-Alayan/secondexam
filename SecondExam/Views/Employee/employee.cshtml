@@ -1,0 +1,70 @@
+﻿@model VMemployee
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>employee</title>
+
+    <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+</head>
+<body>
+
+    <h1>New Employee</h1>
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-1"><label asp-for="employee.Name"></label></div>
+                <div class="col-sm-3"><input type="text" class="form-control" asp-for="employee.Name" />
+                <span asp-validation-for="employee.Name"></span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-1"><label asp-for="employee.Email"></label></div>
+                <div class="col-sm-3"><input type="text" class="form-control" asp-for="employee.Email"/>
+                                      <span asp-validation-for="employee.Email"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"><label asp-for="employee.Phone"></label></div>
+                <div class="col-sm-3"><input type="text" class="form-control" asp-for="employee.Phone"/>
+                                      <span asp-validation-for="employee.Phone"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"><span>BirthDay</span></div>
+                <div class="col-sm-3"><input type="text" class="form-control" asp-for="employee.Bday" />
+                                      <span asp-validation-for="employee.Name"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"><span>Country</span></div>
+                <div class="col-sm-3"><select asp-for="employee.Country_id" asp-items='new SelectList(Model.licountry,"Id","Name")'></select></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"><span>Department</span></div>
+                <div class="col-sm-3"><select asp-for="employee.Dept_id" asp-items='new SelectList(Model.lidepartment,"Id","Name")'></select></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"><span>Image</span></div>
+                <div class="col-sm-3">
+                    <label for="f1" class="btn btn-default">chose image</label>
+                <input type="file" class="form-control" id="f1" style="display:none" asp-for="employee.Image"/></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-1">
+                   <input type="submit" value="Save" asp-action="saveinfo" />
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

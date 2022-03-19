@@ -1,0 +1,67 @@
+﻿@model VMdepartment
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Department</title>
+    <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <h1>Department</h1>
+    <table class="table table-bordered">
+        <thead>
+        <th>Department Name</th>
+        <th>Minsalary</th>
+        <th>Maxsalary</th>
+        <th></th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.lidepartments)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Minsalary</td>
+                    <td>@item.Maxsalary</td>
+                    <td><a asp-action="detailes" asp-route-Id="@item.Id">detals</a></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-1">
+            <input type="button" class="btn btn-primary" asp-action="Index" asp-controller="Employee" />
+        </div>
+    </div>
+    
+    @if (Model.liemployee.Count>0) {
+    <table class="table table-bordered">
+        <thead>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th></th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.liemployee)
+            {
+                <tr>
+                    <td><img src="@item.Path" /></td>
+                    <td>@item.Name</td>
+                    <td>@item.Phone</td>
+                    <td><a asp-action="delete" asp-route-Id="@item.Id">delete</a></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>}
+
+</body>
+</html>
